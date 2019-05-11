@@ -22,6 +22,7 @@ if ($error)
 }
 
 //openssl
+$result = null;
 if ($m1[1] == 'encrypt')
 {
 	$result = openssl_encrypt($m2[1], 'AES-128-ECB', $m3[1]);
@@ -30,11 +31,9 @@ else
 {
 	$result = openssl_decrypt($m2[1], 'AES-128-ECB', $m3[1]);
 }
-
 if (!$result)
 {
-	echo "複合化できませんでした\n";
-	return;
+    echo "暗号化もしくは復号化に失敗しました\n";
 }
 
 echo $result, PHP_EOL;
